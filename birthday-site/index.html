@@ -1,0 +1,477 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Birthday Party ♡</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      padding: 45px 20px;
+      font-family: 'Montserrat', sans-serif;
+      color: #777078;
+      background:
+        linear-gradient(rgba(255,255,255,.18), rgba(255,255,255,.18)),
+        url("images/background.jpg") center/cover fixed,
+        #e9cbd2;
+    }
+
+    .pages {
+      width: min(100%, 1050px);
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 55px;
+      align-items: start;
+    }
+
+    .page {
+      background: #fffdfd;
+      min-height: 100%;
+      padding: 45px 35px;
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(100, 60, 70, .12);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page::before {
+      content: "✧  ·  ✧  ·  ✧";
+      display: block;
+      color: #c78b9d;
+      font-size: 14px;
+      letter-spacing: 9px;
+      margin-bottom: 25px;
+    }
+
+    .script {
+      font-family: 'Great Vibes', cursive;
+      color: #ad667e;
+      font-size: clamp(42px, 6vw, 65px);
+      font-weight: 400;
+    }
+
+    h1, h2 {
+      font-family: 'Cormorant Garamond', serif;
+      color: #a45e77;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    h1 {
+      font-size: 38px;
+      margin-top: -5px;
+    }
+
+    h2 {
+      font-size: 30px;
+      margin-bottom: 5px;
+    }
+
+    .subtitle {
+      font-family: 'Great Vibes', cursive;
+      color: #d5a8b6;
+      font-size: 30px;
+      margin-bottom: 20px;
+    }
+
+    .intro {
+      font-size: 11px;
+      line-height: 1.9;
+      max-width: 290px;
+      margin: 15px auto 25px;
+    }
+
+    .section {
+      margin-top: 55px;
+    }
+
+    .divider {
+      width: 55px;
+      height: 1px;
+      background: #d9aab8;
+      margin: 22px auto;
+    }
+
+    /* Фотографии */
+
+    .collage {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin: 25px auto;
+    }
+
+    .film {
+      width: 43%;
+      padding: 9px 8px;
+      background: #fff;
+      border: 1px solid #eee7e9;
+      box-shadow: 0 5px 15px rgba(80, 50, 60, .1);
+      transform: rotate(-4deg);
+    }
+
+    .film:nth-child(2) {
+      transform: rotate(4deg) translateY(18px);
+    }
+
+    .film img {
+      display: block;
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+    }
+
+    .film.small img {
+      height: 145px;
+    }
+
+    .film.wide {
+      width: 55%;
+      transform: rotate(-2deg);
+    }
+
+    .film.wide img {
+      height: 180px;
+    }
+
+    /* Палитра */
+
+    .palette {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin: 25px 0;
+    }
+
+    .color {
+      width: 52px;
+      height: 22px;
+      border: 1px solid #eee;
+    }
+
+    .pink { background: #f4c8d4; }
+    .rose { background: #df91ad; }
+    .lilac { background: #e9c9e8; }
+    .cream { background: #fffaf2; }
+    .white { background: #fff; }
+
+    /* Расписание */
+
+    .timeline {
+      text-align: left;
+      max-width: 270px;
+      margin: 30px auto;
+      border-left: 1px solid #c98ca1;
+      padding-left: 20px;
+    }
+
+    .event {
+      position: relative;
+      margin-bottom: 30px;
+    }
+
+    .event::before {
+      content: "";
+      position: absolute;
+      left: -26px;
+      top: 4px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #c47b96;
+      border: 2px solid #fff;
+      box-shadow: 0 0 0 1px #c47b96;
+    }
+
+    .time {
+      font-size: 10px;
+      color: #bd8297;
+      margin-bottom: 7px;
+    }
+
+    .event h3 {
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+
+    .event p {
+      font-size: 10px;
+      line-height: 1.7;
+    }
+
+    /* Кнопки */
+
+    .button {
+      display: inline-block;
+      padding: 10px 28px;
+      border: 1px solid #c994a7;
+      border-radius: 30px;
+      color: #a86c82;
+      text-decoration: none;
+      font-size: 10px;
+      letter-spacing: 1px;
+      margin-top: 15px;
+      transition: .3s;
+    }
+
+    .button:hover {
+      background: #c994a7;
+      color: white;
+    }
+
+    .footer {
+      margin-top: 65px;
+      font-family: 'Great Vibes', cursive;
+      color: #b87890;
+      font-size: 32px;
+    }
+
+    .sparkle {
+      color: #bd8297;
+      font-size: 16px;
+      margin: 12px;
+    }
+
+    @media (max-width: 700px) {
+      body {
+        padding: 20px 12px;
+        background-attachment: scroll;
+      }
+
+      .pages {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        max-width: 430px;
+      }
+
+      .page {
+        padding: 35px 25px;
+      }
+
+      .film img {
+        height: 180px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="pages">
+
+    <!-- ПЕРВАЯ СТРАНИЦА -->
+    <section class="page">
+
+      <div class="script">Birthday</div>
+      <h1>Party</h1>
+
+      <p class="intro">
+        Приглашаю тебя разделить со мной
+        один из самых особенных дней!
+        Будет много улыбок, фотографий,
+        приятных моментов и воспоминаний ♡
+      </p>
+
+      <div class="divider"></div>
+
+      <div class="section">
+        <h2>Наши моменты</h2>
+        <div class="subtitle">memories</div>
+
+        <div class="collage">
+          <div class="film">
+            <img src="images/photo1.jpg" alt="Фото 1">
+          </div>
+          <div class="film">
+            <img src="images/photo2.jpg" alt="Фото 2">
+          </div>
+        </div>
+
+        <div class="collage">
+          <div class="film small">
+            <img src="images/photo3.jpg" alt="Фото 3">
+          </div>
+          <div class="film small">
+            <img src="images/photo4.jpg" alt="Фото 4">
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Тайминг</h2>
+        <div class="subtitle">timing</div>
+
+        <div class="timeline">
+          <div class="event">
+            <div class="time">15:00</div>
+            <h3>Сбор гостей</h3>
+            <p>Встречаемся, обнимаемся и знакомимся.</p>
+          </div>
+
+          <div class="event">
+            <div class="time">15:30</div>
+            <h3>Фотосессия</h3>
+            <p>Сохраняем самые красивые моменты.</p>
+          </div>
+
+          <div class="event">
+            <div class="time">16:00</div>
+            <h3>Праздничная программа</h3>
+            <p>Музыка, веселье и приятные сюрпризы.</p>
+          </div>
+
+          <div class="event">
+            <div class="time">18:00</div>
+            <h3>Торт!</h3>
+            <p>Самая сладкая часть вечера ♡</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">See you soon ♡</div>
+<div style="
+  width: 75%;
+  max-width: 300px;
+  margin: 35px auto 25px;
+  padding: 9px;
+  background: white;
+  border: 1px solid #eee5e8;
+  box-shadow: 0 5px 18px rgba(80, 50, 60, .12);
+  transform: rotate(-2deg);
+">
+  <img
+    src="images/photo7.jpg"
+    alt="Особенный момент"
+    style="
+      display: block;
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      object-position: center;
+    "
+  >
+</div>
+    </section>
+
+
+    <!-- ВТОРАЯ СТРАНИЦА -->
+    <section class="page">
+
+      <div class="section" style="margin-top: 5px;">
+        <h2>Дресс-код</h2>
+        <div class="subtitle">dress code</div>
+
+        <div class="collage">
+          <div class="film">
+            <img src="images/photo5.jpg" alt="Образ 1">
+          </div>
+          <div class="film">
+            <img src="images/photo6.jpg" alt="Образ 2">
+          </div>
+        </div>
+
+        <p class="intro">
+          Буду рада, если вы поддержите
+          цветовую гамму вечера.
+          Главное — чтобы вам было комфортно!
+        </p>
+
+        <div class="palette">
+          <div class="color pink"></div>
+          <div class="color rose"></div>
+          <div class="color lilac"></div>
+          <div class="color cream"></div>
+          <div class="color white"></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Подарок</h2>
+        <div class="subtitle">present</div>
+
+        <p class="intro">
+          Самый главный подарок для меня —
+          ваше присутствие и хорошее настроение.
+          Но если вы захотите меня порадовать,
+          буду счастлива любому сюрпризу ♡
+        </p>
+
+        <div class="collage">
+          <div class="film">
+            <img src="images/photo1.jpg" alt="Подарок 1">
+          </div>
+          <div class="film">
+            <img src="images/photo3.jpg" alt="Подарок 2">
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Локация</h2>
+        <div class="subtitle">location</div>
+
+        <div class="collage">
+          <div class="film wide">
+            <img src="images/photo4.jpg" alt="Место праздника">
+          </div>
+        </div>
+
+        <p class="intro">
+          Жду вас по адресу:
+          <br>
+          <strong>Здесь будет адрес праздника</strong>
+          <br><br>
+          Дата: 00.00.2027
+          <br>
+          Время: 15:00
+        </p>
+
+        <a class="button" href="https://maps.google.com/" target="_blank">
+          ОТКРЫТЬ НА КАРТЕ
+        </a>
+      </div>
+
+      <div class="section">
+        <h2>Общий чат</h2>
+        <div class="subtitle">let's talk</div>
+
+        <p class="intro">
+          Здесь будет ссылка на общий чат,
+          где можно обсудить все детали праздника.
+        </p>
+
+        <a class="button" href="#" target="_blank">
+          ПЕРЕЙТИ В ЧАТ
+        </a>
+      </div>
+
+      <div class="footer">
+        With love ♡
+      </div>
+
+    </section>
+
+  </main>
+
+</body>
+</html>
